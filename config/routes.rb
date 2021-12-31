@@ -3,10 +3,7 @@ Rails.application.routes.draw do
   root 'homepage#index'
 
   namespace :api do
-    get 'todos/index'
-    post 'todos/create'
-    get 'todos/show', to: 'todos#show'
-    delete 'todos/destroy', to: 'todos#destroy'
+    resources :todos
   end
 
   get '*path' => 'homepage#index'
