@@ -13,3 +13,37 @@
  *= require_tree .
  *= require_self
  */
+
+#add-todo-button {
+  float: right;
+}
+
+#todo-list {
+  display: table;
+  margin: 0 auto;
+  width: 600px;
+  text-align: center;
+}
+
+.todo-list-header {
+  font-weight: bold;
+}
+
+.test {
+  display: table-row;
+}
+
+.flex-row {
+  display: flex;
+  flex-wrap: row nowrap;
+}
+
+.todo-col {
+  float: left;
+  width: 80%;
+}
+
+.category-col {
+  float: right;
+  width: 20%;
+}

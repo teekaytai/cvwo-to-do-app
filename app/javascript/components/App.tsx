@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import TodosPage from "../components/TodosPage";
+import TodosListPage from "./TodosListPage";
 
 export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<TodosPage />} />
+        <Route path="/" element={<TodosListPage />} />
       </Routes>
     </Router>
   );
