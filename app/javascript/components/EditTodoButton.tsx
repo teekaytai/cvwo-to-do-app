@@ -2,7 +2,7 @@ import React from "react";
 
 function EditTodoButton() {
   return (
-    <button className="material-icons md-18 edit-todo-button">edit</button>
+    <button className="material-icons edit-todo-button">edit</button>
   );
 }
 
