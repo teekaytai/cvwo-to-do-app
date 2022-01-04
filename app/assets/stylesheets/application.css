@@ -14,28 +14,18 @@
  *= require_self
  */
 
+#search-bar {
+  display: inline-block
+}
+
 #add-todo-button {
   float: right;
 }
 
 #todo-list {
-  display: table;
-  margin: 0 auto;
+  margin: 50px auto;
   width: 600px;
-  text-align: center;
-}
-
-.todo-list-header {
-  font-weight: bold;
-}
-
-.test {
-  display: table-row;
-}
-
-.flex-row {
-  display: flex;
-  flex-wrap: row nowrap;
+  font-size: large;
 }
 
 .todo-col {
@@ -46,4 +36,36 @@
 .category-col {
   float: right;
   width: 20%;
+  text-align: center;
+}
+
+.todo-list-header {
+  display: flex;
+  border: 1px solid;
+  padding: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.todo-entry {
+  border: 1px solid;
+}
+
+.todo-summary {
+  display: flex;
+  padding: 10px;
+}
+
+.todo-details {
+  padding: 5px 10px 35px;
+}
+
+.edit-todo-button {
+  float: right;
+  font-size: 18px;
+}
+
+.delete-todo-button {
+  float: right;
+  font-size: 18px;
 }

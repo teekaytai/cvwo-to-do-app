@@ -2,8 +2,8 @@ import React from "react";
 
 function SearchBar() {
   return (
-    <form>
-        <input type="text" placeholder="Search..." />
+    <form id="search-bar">
+      <input type="text" placeholder="Search..." />
       <input type="submit" value="Search" />
     </form>
   );

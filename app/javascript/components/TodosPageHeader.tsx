@@ -6,8 +6,8 @@ import AddTodoButton from "./AddTodoButton";
 function TodosPageHeader() {
   return (
     <>
-      <AddTodoButton />
       <SearchBar />
+      <AddTodoButton />
     </>
   );
 }

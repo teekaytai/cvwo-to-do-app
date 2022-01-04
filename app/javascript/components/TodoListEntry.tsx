@@ -1,6 +1,8 @@
 import React from "react";
 
 import TodoCheckbox from "./TodoCheckbox";
+import EditTodoButton from "./EditTodoButton";
+import DeleteTodoButton from "./DeleteTodoButton";
 import { Todo } from "./types";
 
 type TodoListEntryProps = {
@@ -10,12 +12,18 @@ type TodoListEntryProps = {
 
 function TodoListEntry({ todo }: TodoListEntryProps) {
   return (
-    <div className="test">
-      <div className="todo-col flex-row">
-        <div><TodoCheckbox /></div>
-        <div>{todo.name}</div>
+    <div className="todo-entry">
+      <div className="todo-summary">
+        <div className="todo-col">
+          <TodoCheckbox />{todo.name}
+        </div>
+        <div className="category-col">{todo.category}</div>
       </div>
-      <div className="category-col">{todo.category}</div>
+      <div className="todo-details">
+        <p>{todo.details}</p>
+        <DeleteTodoButton />
+        <EditTodoButton />
+      </div>
     </div>
   );
 }
