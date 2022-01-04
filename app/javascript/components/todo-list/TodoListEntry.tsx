@@ -3,7 +3,7 @@ import React from "react";
 import TodoCheckbox from "./TodoCheckbox";
 import EditTodoButton from "./EditTodoButton";
 import DeleteTodoButton from "./DeleteTodoButton";
-import { Todo } from "./types";
+import { Todo } from "../types";
 
 type TodoListEntryProps = {
   key: string;

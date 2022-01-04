@@ -1,7 +1,7 @@
 import React from "react";
 
-import TodosPageHeader from "./TodosPageHeader";
-import TodoList from "./TodoList";
+import TodosPageHeader from "./todos-page-header/TodosPageHeader";
+import TodoList from "./todo-list/TodoList";
 
 function TodosListPage() {
   return (
