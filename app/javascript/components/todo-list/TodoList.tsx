@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import * as React from "react";
 
 import TodoListHeader from "./TodoListHeader";
 import TodoListEntry from "./TodoListEntry";
+import { Todo } from "components/types";
 
 function TodoList() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = React.useState<Todo[]>([]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const url = "/api/todos";
     fetch(url)
       .then(response => {
@@ -21,10 +22,10 @@ function TodoList() {
 
 
   if (todos === null) {
-    return <div align="center">Error, unable to retrieve to-do list :(</div>
+    return <div style={{textAlign: "center"}}>Error, unable to retrieve to-do list :(</div>
   }
   if (todos.length === 0) {
-    return <div align="center">No to-dos yet. Use the add to-do button above to add one!</div>
+    return <div style={{textAlign: "center"}}>No to-dos yet. Use the add to-do button above to add one!</div>
   }
 
   return (

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 import TodosPageHeader from "./todos-page-header/TodosPageHeader";
 import TodoList from "./todo-list/TodoList";
