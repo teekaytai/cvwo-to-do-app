@@ -5,8 +5,8 @@ class Api::TodosController < ApplicationController
   end
 
   def create
-   new_todo = Todo.create(todo_params)
-    if new_todo
+   new_todo = Todo.new(todo_params)
+    if new_todo.save
       render json: new_todo
     else
       render json: new_todo.errors, status: :unprocessable_entity
@@ -23,7 +23,7 @@ class Api::TodosController < ApplicationController
 
   def update
     if todo.update(todo_params)
-      redirect_to root_path
+      render json: todo
     else
       render json: todo.errors, status: :unprocessable_entity
     end
@@ -37,7 +37,7 @@ class Api::TodosController < ApplicationController
   private
 
   def todo_params
-    params.permit(:name, :details, :category)
+    params.require('todo').permit(:name, :details, :category)
   end
 
   def todo

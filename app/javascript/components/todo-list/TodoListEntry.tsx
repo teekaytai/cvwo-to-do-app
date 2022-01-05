@@ -8,7 +8,7 @@ import { Todo } from "../types";
 type TodoListEntryProps = {
   key: string;
   todo: Todo;
-}
+};
 
 function TodoListEntry({ todo }: TodoListEntryProps) {
   return (
@@ -22,7 +22,7 @@ function TodoListEntry({ todo }: TodoListEntryProps) {
       <div className="todo-details">
         <p>{todo.details}</p>
         <DeleteTodoButton />
-        <EditTodoButton />
+        <EditTodoButton todoId={todo.id} />
       </div>
     </div>
   );

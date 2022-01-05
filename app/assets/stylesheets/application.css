@@ -14,12 +14,13 @@
  *= require_self
  */
 
-body {
+body, input, textarea {
   font-family: 'Roboto', sans-serif;
+  font-size: 18px;
 }
 
-input {
-  font-family: 'Roboto', sans-serif;
+label {
+  display: block;
 }
 
 #search-bar {

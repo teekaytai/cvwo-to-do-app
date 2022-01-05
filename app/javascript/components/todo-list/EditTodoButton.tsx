@@ -1,8 +1,15 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 
-function EditTodoButton() {
+type EditTodoButtonProps = {
+  todoId: number;
+};
+
+function EditTodoButton({ todoId }: EditTodoButtonProps) {
   return (
-    <button className="material-icons edit-todo-button">edit</button>
+    <Link to={`/edit/${todoId}`}>
+      <button className="material-icons edit-todo-button">edit</button>
+    </Link>
   );
 }
 

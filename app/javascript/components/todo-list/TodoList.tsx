@@ -14,7 +14,7 @@ function TodoList() {
         if (response.ok) {
           return response.json();
         }
-        throw new Error("Network response was not ok.")
+        throw new Error("Failed to fetch to-dos.");
       })
       .then(data => setTodos(data))
       .catch(() => setTodos(null));
