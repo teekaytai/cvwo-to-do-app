@@ -6,7 +6,7 @@ import DeleteTodoButton from "./DeleteTodoButton";
 import { Todo } from "../types";
 
 type TodoListEntryProps = {
-  key: string;
+  key: number;
   todo: Todo;
 };
 
@@ -21,7 +21,7 @@ function TodoListEntry({ todo }: TodoListEntryProps) {
       </div>
       <div className="todo-details">
         <p>{todo.details}</p>
-        <DeleteTodoButton />
+        <DeleteTodoButton todoId={todo.id} />
         <EditTodoButton todoId={todo.id} />
       </div>
     </div>

@@ -4,8 +4,28 @@ import TodoListHeader from "./TodoListHeader";
 import TodoListEntry from "./TodoListEntry";
 import { Todo } from "components/types";
 
+type todosReducerAction = {
+  type: string;
+  newTodos?: Todo[];
+  todoId?: number;
+};
+
+function todosReducer(todos: Todo[], action: todosReducerAction): Todo[] {
+  switch (action.type) {
+    case "set":
+      return action.newTodos;
+    case "delete":
+      return todos.filter(todo => todo.id != action.todoId);
+    default:
+      throw new Error("Unknown action type in todosReducer");
+  }
+}
+
+export const TodosDispatch = React.createContext<React.Dispatch<todosReducerAction>>(null);
+
+
 function TodoList() {
-  const [todos, setTodos] = React.useState<Todo[]>([]);
+  const [todos, todosDispatch] = React.useReducer(todosReducer, []);
 
   React.useEffect(() => {
     const url = "/api/todos";
@@ -16,8 +36,8 @@ function TodoList() {
         }
         throw new Error("Failed to fetch to-dos.");
       })
-      .then(data => setTodos(data))
-      .catch(() => setTodos(null));
+      .then(data => todosDispatch({ type: "set", newTodos: data }))
+      .catch(() => todosDispatch({ type: "set", newTodos: null }));
   }, []);
 
 
@@ -31,9 +51,11 @@ function TodoList() {
   return (
     <div id="todo-list">
       <TodoListHeader />
-      {todos.map(todo =>
-        <TodoListEntry key={todo.name} todo={todo} />
-      )}
+      <TodosDispatch.Provider value={todosDispatch}>
+        {todos.map(todo =>
+          <TodoListEntry key={todo.id} todo={todo} />
+        )}
+      </TodosDispatch.Provider>
     </div>
   );
 }
