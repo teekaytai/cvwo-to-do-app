@@ -7,11 +7,6 @@ type TodoFormProps = {
   formType: "add" | "edit";
 }
 
-type FormField = Element & {
-  name: string;
-  value: string;
-}
-
 function TodoForm({ formType }: TodoFormProps) {
   const isEditForm = formType == "edit";
   const { id } = useParams();
@@ -42,8 +37,8 @@ function TodoForm({ formType }: TodoFormProps) {
     }, []);
   }
 
-  const handleChange = (event: React.ChangeEvent) => {
-    const target = event.target as FormField;
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const target = event.target;
     switch (target.name) {
       case "todo[name]":
         setName(target.value);
@@ -60,6 +55,7 @@ function TodoForm({ formType }: TodoFormProps) {
   const handleSubmit = (event: React.FormEvent): void => {
     event.preventDefault();
     const url = isEditForm ? `/api/todos/${id}` : "/api/todos";
+    const token = (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement).content;
 
     const body = {
       name,
@@ -67,7 +63,6 @@ function TodoForm({ formType }: TodoFormProps) {
       details
     };
 
-    const token = (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement).content;
     fetch(url, {
       method: isEditForm ? "PATCH" : "POST",
       headers: {

@@ -3,4 +3,5 @@ export type Todo = {
     name: string;
     details: string;
     category: string;
+    is_done: boolean;
 };

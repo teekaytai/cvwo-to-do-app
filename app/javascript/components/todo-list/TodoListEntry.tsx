@@ -15,7 +15,7 @@ function TodoListEntry({ todo }: TodoListEntryProps) {
     <div className="todo-entry">
       <div className="todo-summary">
         <div className="todo-col">
-          <TodoCheckbox />{todo.name}
+          <TodoCheckbox todoId={todo.id} todoIsDone={todo.is_done} /> {todo.name}
         </div>
         <div className="category-col">{todo.category}</div>
       </div>

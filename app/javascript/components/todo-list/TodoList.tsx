@@ -16,6 +16,9 @@ function todosReducer(todos: Todo[], action: todosReducerAction): Todo[] {
       return action.newTodos;
     case "delete":
       return todos.filter(todo => todo.id != action.todoId);
+    case "toggleDone":
+      // Toggle the is_done status of the to-do
+      return todos.map(todo => todo.id == action.todoId ? { ...todo, is_done: !todo.is_done } : todo);
     default:
       throw new Error("Unknown action type in todosReducer");
   }
