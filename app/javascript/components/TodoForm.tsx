@@ -12,7 +12,6 @@ function TodoForm({ formType }: TodoFormProps) {
   const { id } = useParams();
   const [todoToEdit, setTodoToEdit] = React.useState<Todo>(null);
   const [name, setName] = React.useState("");
-  const [category, setCategory] = React.useState("");
   const [tagsString, setTagsString] = React.useState("");
   const [details, setDetails] = React.useState("");
   const navigate = useNavigate();
@@ -31,7 +30,6 @@ function TodoForm({ formType }: TodoFormProps) {
           setTodoToEdit(data);
           // Pre-fill form fields with the to-do's information
           setName(data.name);
-          setCategory(data.category);
           setTagsString(data.tags.join(" "));
           setDetails(data.details);
         })
@@ -44,9 +42,6 @@ function TodoForm({ formType }: TodoFormProps) {
     switch (target.name) {
       case "todo[name]":
         setName(target.value);
-        break;
-      case "todo[category]":
-        setCategory(target.value);
         break;
       case "tags":
         setTagsString(target.value);
@@ -64,7 +59,6 @@ function TodoForm({ formType }: TodoFormProps) {
 
     const body = {
       name,
-      category,
       details,
       tags: tagsString.split(/\s+/).filter(tag => tag != "")
     };
@@ -117,18 +111,6 @@ function TodoForm({ formType }: TodoFormProps) {
                 required
                 onChange={handleChange}
                 autoFocus />
-            </div>
-            <div>
-              <label htmlFor="todo-category">
-                Category
-              </label>
-              <input
-                type="text"
-                id="todo-category"
-                name="todo[category]"
-                value={category}
-                maxLength={100}
-                onChange={handleChange} />
             </div>
             <div>
               <label htmlFor="todo-tags">

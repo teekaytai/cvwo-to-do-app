@@ -7,16 +7,14 @@
 #   Character.create(name: "Luke", movie: movies.first)
 todo1 = Todo.create(
   name: 'To-do 1',
-  details: 'To-do 1 details',
-  category: 'To-do 1 category'
+  details: 'To-do 1 details'
 )
 todo2 = Todo.create(
   name: 'To-do 2',
   details: 'To-do 2 details'
 )
 todo3 = Todo.create(
-  name: 'To-do 3',
-  category: 'To-do 3 category'
+  name: 'To-do 3'
 )
 todo4 = Todo.create(
   name: 'To-do 4'

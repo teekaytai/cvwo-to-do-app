@@ -6,7 +6,6 @@ import TodoList from "./todo-list/TodoList";
 function TodosListPage() {
   return (
     <>
-      <h1>To-do List</h1>
       <TodosPageHeader />
       <TodoList />
     </>

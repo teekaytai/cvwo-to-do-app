@@ -3,11 +3,9 @@
 one:
   name: MyString
   details: MyText
-  category: MyString
   is_done: false
 
 two:
   name: MyString
   details: MyText
-  category: MyString
   is_done: false

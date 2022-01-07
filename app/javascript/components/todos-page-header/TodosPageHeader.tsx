@@ -6,6 +6,7 @@ import AddTodoButton from "./AddTodoButton";
 function TodosPageHeader() {
   return (
     <>
+      <h1>To-do App</h1>
       <SearchBar />
       <AddTodoButton />
     </>

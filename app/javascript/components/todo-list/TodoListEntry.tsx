@@ -14,13 +14,10 @@ function TodoListEntry({ todo }: TodoListEntryProps) {
   return (
     <div className="todo-entry">
       <div className="todo-summary">
-        <div className="todo-col">
-          <TodoCheckbox todoId={todo.id} todoIsDone={todo.is_done} /> {todo.name}
-        </div>
-        <div className="category-col">{todo.category}</div>
+        <TodoCheckbox todoId={todo.id} todoIsDone={todo.is_done} /> {todo.name}
       </div>
       <div className="todo-full">
-        <p>{todo.details}</p>
+        {todo.details}
       </div>
       <div className="todo-full">
         Tags: {todo.tags.length ? todo.tags.join(" ") : "NONE"}

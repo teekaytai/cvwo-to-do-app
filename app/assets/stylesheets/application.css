@@ -37,19 +37,7 @@ label {
   font-size: large;
 }
 
-.todo-col {
-  float: left;
-  width: 80%;
-}
-
-.category-col {
-  float: right;
-  width: 20%;
-  text-align: center;
-}
-
 .todo-list-header {
-  display: flex;
   border: 1px solid;
   padding: 10px;
   font-weight: bold;
@@ -61,12 +49,11 @@ label {
 }
 
 .todo-summary {
-  display: flex;
   padding: 10px;
 }
 
 .todo-full {
-  padding: 5px 10px;
+  padding: 10px;
 }
 
 .todo-buttons {
