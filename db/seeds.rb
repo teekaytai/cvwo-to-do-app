@@ -5,19 +5,30 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-Todo.create(
+todo1 = Todo.create(
   name: 'To-do 1',
   details: 'To-do 1 details',
   category: 'To-do 1 category'
 )
-Todo.create(
+todo2 = Todo.create(
   name: 'To-do 2',
   details: 'To-do 2 details'
 )
-Todo.create(
+todo3 = Todo.create(
   name: 'To-do 3',
   category: 'To-do 3 category'
 )
-Todo.create(
+todo4 = Todo.create(
   name: 'To-do 4'
 )
+tag1 = Tag.create(
+  name: 'tag_1',
+  count: 3
+)
+tag2 = Tag.create(
+  name: 'tag_2',
+  count: 1
+)
+todo1.tags << tag1
+todo3.tags << [tag1, tag2]
+todo4.tags << tag1
