@@ -65,8 +65,13 @@ label {
   padding: 10px;
 }
 
-.todo-details {
-  padding: 5px 10px 35px;
+.todo-full {
+  padding: 5px 10px;
+}
+
+.todo-buttons {
+  overflow: auto;
+  padding: 10px;
 }
 
 .edit-todo-button {
@@ -77,4 +82,8 @@ label {
 .delete-todo-button {
   float: right;
   font-size: 18px;
+}
+
+input#todo-tags {
+  text-transform: lowercase;
 }

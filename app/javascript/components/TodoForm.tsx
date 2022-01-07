@@ -13,6 +13,7 @@ function TodoForm({ formType }: TodoFormProps) {
   const [todoToEdit, setTodoToEdit] = React.useState<Todo>(null);
   const [name, setName] = React.useState("");
   const [category, setCategory] = React.useState("");
+  const [tagsString, setTagsString] = React.useState("");
   const [details, setDetails] = React.useState("");
   const navigate = useNavigate();
 
@@ -26,11 +27,12 @@ function TodoForm({ formType }: TodoFormProps) {
           }
           throw new Error("Failed to fetch to-do.")
         })
-        .then(data => {
+        .then((data: Todo) => {
           setTodoToEdit(data);
           // Pre-fill form fields with the to-do's information
           setName(data.name);
           setCategory(data.category);
+          setTagsString(data.tags.join(" "));
           setDetails(data.details);
         })
         .catch(error => console.log(error.message));
@@ -46,6 +48,9 @@ function TodoForm({ formType }: TodoFormProps) {
       case "todo[category]":
         setCategory(target.value);
         break;
+      case "tags":
+        setTagsString(target.value);
+        break;
       case "todo[details]":
         setDetails(target.value);
         break;
@@ -60,7 +65,8 @@ function TodoForm({ formType }: TodoFormProps) {
     const body = {
       name,
       category,
-      details
+      details,
+      tags: tagsString.split(/\s+/).filter(tag => tag != "")
     };
 
     fetch(url, {
@@ -78,7 +84,7 @@ function TodoForm({ formType }: TodoFormProps) {
           throw new Error("To-do submission failed.");
         }
       })
-      .catch(error => console.log(error.message));
+      .catch(error => alert(error.message));
   };
 
 
@@ -121,6 +127,19 @@ function TodoForm({ formType }: TodoFormProps) {
                 id="todo-category"
                 name="todo[category]"
                 value={category}
+                maxLength={100}
+                onChange={handleChange} />
+            </div>
+            <div>
+              <label htmlFor="todo-tags">
+                Tags (separate using spaces only)
+              </label>
+              <input
+                type="text"
+                id="todo-tags"
+                name="tags"
+                value={tagsString}
+                size={50}
                 maxLength={100}
                 onChange={handleChange} />
             </div>

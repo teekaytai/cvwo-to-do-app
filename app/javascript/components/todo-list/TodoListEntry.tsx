@@ -19,8 +19,13 @@ function TodoListEntry({ todo }: TodoListEntryProps) {
         </div>
         <div className="category-col">{todo.category}</div>
       </div>
-      <div className="todo-details">
+      <div className="todo-full">
         <p>{todo.details}</p>
+      </div>
+      <div className="todo-full">
+        Tags: {todo.tags.length ? todo.tags.join(" ") : "NONE"}
+      </div>
+      <div className="todo-buttons">
         <DeleteTodoButton todoId={todo.id} />
         <EditTodoButton todoId={todo.id} />
       </div>
