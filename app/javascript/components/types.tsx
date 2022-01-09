@@ -6,6 +6,7 @@ export type Todo = {
     details: string;
     is_done: boolean;
     tags: Tag[];
+    isExpanded: boolean;
 };
 
 export type SearchQuery = {

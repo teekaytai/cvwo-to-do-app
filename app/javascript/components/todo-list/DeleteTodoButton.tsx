@@ -35,7 +35,7 @@ function DeleteTodoButton({ todoId }: DeleteTodoButtonProps) {
   };
 
   return (
-    <button className="material-icons delete-todo-button" onClick={handleDelete}>
+    <button className="material-icons todo-button" onClick={handleDelete}>
       delete
     </button>
   );

@@ -10,6 +10,7 @@ type todosReducerAction = {
   type: string;
   newTodos?: Todo[];
   todoId?: number;
+  expand?: boolean;
 };
 
 function todosReducer(todos: Todo[], action: todosReducerAction): Todo[] {
@@ -21,6 +22,12 @@ function todosReducer(todos: Todo[], action: todosReducerAction): Todo[] {
     case "toggleDone":
       // Toggle the is_done status of the to-do
       return todos.map(todo => todo.id == action.todoId ? { ...todo, is_done: !todo.is_done } : todo);
+    case "toggleExpanded":
+      // Expand or collapse a to-do entry
+      return todos.map(todo => todo.id == action.todoId ? { ...todo, isExpanded: !todo.isExpanded } : todo);
+    case "toggleExpandedAll":
+      // Expand or collapse all to-do entries
+      return todos.map(todo => ({ ...todo, isExpanded: action.expand }));
     default:
       throw new Error("Unknown action type in todosReducer");
   }
@@ -79,8 +86,8 @@ function TodoList({ searchQuery }: TodoListProps) {
 
   return (
     <div id="todo-list">
-      <TodoListHeader />
       <TodosDispatch.Provider value={todosDispatch}>
+        <TodoListHeader />
         {searchTodos(todos, searchQuery).map(todo =>
             <TodoListEntry key={todo.id} todo={todo} />
         )}

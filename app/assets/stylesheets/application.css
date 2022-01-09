@@ -24,7 +24,7 @@ label {
 }
 
 #search-bar {
-  display: inline-block
+  display: inline-block;
 }
 
 .tags-input {
@@ -57,20 +57,24 @@ label {
 }
 
 .todo-full {
-  padding: 10px;
-}
-
-.todo-buttons {
+  padding: 0px 10px;
   overflow: auto;
-  padding: 10px;
 }
 
-.edit-todo-button {
+.todo-full-row {
+  padding-top: 5px;
+  padding-bottom: 10px;
+  overflow: auto;
+}
+
+.expand-button {
   float: right;
-  font-size: 18px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
-.delete-todo-button {
+.todo-button {
   float: right;
   font-size: 18px;
 }

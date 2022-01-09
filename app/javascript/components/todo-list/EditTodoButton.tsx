@@ -8,7 +8,7 @@ type EditTodoButtonProps = {
 function EditTodoButton({ todoId }: EditTodoButtonProps) {
   return (
     <Link to={`/edit/${todoId}`}>
-      <button className="material-icons edit-todo-button">edit</button>
+      <button className="material-icons todo-button">edit</button>
     </Link>
   );
 }
