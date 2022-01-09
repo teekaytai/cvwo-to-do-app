@@ -27,6 +27,10 @@ label {
   display: inline-block
 }
 
+.tags-input {
+  text-transform: lowercase;
+}
+
 #add-todo-button {
   float: right;
 }
@@ -69,8 +73,4 @@ label {
 .delete-todo-button {
   float: right;
   font-size: 18px;
-}
-
-input#todo-tags {
-  text-transform: lowercase;
 }

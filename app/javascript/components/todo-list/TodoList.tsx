@@ -2,7 +2,9 @@ import * as React from "react";
 
 import TodoListHeader from "./TodoListHeader";
 import TodoListEntry from "./TodoListEntry";
-import { Todo } from "components/types";
+import { Todo, SearchQuery } from "components/types";
+
+export const TodosDispatch = React.createContext<React.Dispatch<todosReducerAction>>(null);
 
 type todosReducerAction = {
   type: string;
@@ -24,10 +26,34 @@ function todosReducer(todos: Todo[], action: todosReducerAction): Todo[] {
   }
 }
 
-export const TodosDispatch = React.createContext<React.Dispatch<todosReducerAction>>(null);
+// Return todos that contain all the tags and the exact text of the search query
+function searchTodos(todos: Todo[], searchQuery: SearchQuery): Todo[] {
+  if (searchQuery === null) {
+    return todos;
+  }
+
+  const lowerCaseText = searchQuery.text.toLowerCase();
+
+  return todos.filter(todo => {
+    if (searchQuery.tags.some(tag => !todo.tags.includes(tag))) {
+      // todo missing a searched tag
+      return false;
+    }
+    if (lowerCaseText && !todo.name.toLowerCase().includes(lowerCaseText) &&
+        !todo.details.toLowerCase().includes(lowerCaseText)) {
+        // todo name and details do not contain searched text
+        return false;
+    }
+    return true;
+  })
+}
 
 
-function TodoList() {
+type TodoListProps = {
+  searchQuery: SearchQuery;
+};
+
+function TodoList({ searchQuery }: TodoListProps) {
   const [todos, todosDispatch] = React.useReducer(todosReducer, []);
 
   React.useEffect(() => {
@@ -55,8 +81,8 @@ function TodoList() {
     <div id="todo-list">
       <TodoListHeader />
       <TodosDispatch.Provider value={todosDispatch}>
-        {todos.map(todo =>
-          <TodoListEntry key={todo.id} todo={todo} />
+        {searchTodos(todos, searchQuery).map(todo =>
+            <TodoListEntry key={todo.id} todo={todo} />
         )}
       </TodosDispatch.Provider>
     </div>

@@ -119,6 +119,7 @@ function TodoForm({ formType }: TodoFormProps) {
               <input
                 type="text"
                 id="todo-tags"
+                className="tags-input"
                 name="tags"
                 value={tagsString}
                 size={50}

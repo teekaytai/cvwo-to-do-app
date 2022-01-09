@@ -7,3 +7,8 @@ export type Todo = {
     is_done: boolean;
     tags: Tag[];
 };
+
+export type SearchQuery = {
+    tags: Tag[];
+    text: string;
+};

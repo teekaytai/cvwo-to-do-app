@@ -2,12 +2,17 @@ import * as React from "react";
 
 import SearchBar from "./SearchBar";
 import AddTodoButton from "./AddTodoButton";
+import { SearchQuery } from "../types";
 
-function TodosPageHeader() {
+type TodosPageHeaderProps = {
+  setSearchQuery: React.Dispatch<React.SetStateAction<SearchQuery>>
+}
+
+function TodosPageHeader({ setSearchQuery }: TodosPageHeaderProps) {
   return (
     <>
       <h1>To-do App</h1>
-      <SearchBar />
+      <SearchBar setSearchQuery={setSearchQuery} />
       <AddTodoButton />
     </>
   );
