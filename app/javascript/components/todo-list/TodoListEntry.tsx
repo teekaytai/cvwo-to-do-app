@@ -20,19 +20,26 @@ function TodoListEntry({ todo }: TodoListEntryProps) {
       </div>
       {
         todo.isExpanded &&
-        <div className="todo-full">
-          {
-            todo.details &&
-              <div className="todo-full-row">
-                {todo.details}
-              </div>
-          }
-          <div className="todo-full-row">
-            {todo.tags.length ? `Tags: ${todo.tags.join(" ")}` : ""}
-            <DeleteTodoButton todoId={todo.id} />
-            <EditTodoButton todoId={todo.id} />
+          <div className="todo-full">
+            {
+              todo.details !== "" &&
+                <div className="todo-full-row">
+                  {todo.details}
+                </div>
+            }
+            {
+              todo.tags.length !== 0 && 
+                <div className="todo-full-row">
+                  <>
+                    Tags: {todo.tags.map(tag => <span key={tag} className="tag">{tag}</span>)}
+                  </>
+                </div>
+            }
+            <div className="todo-full-row">
+              <DeleteTodoButton todoId={todo.id} />
+              <EditTodoButton todoId={todo.id} />
+            </div>  
           </div>
-        </div>
       }
     </div>
   );

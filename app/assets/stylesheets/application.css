@@ -74,6 +74,14 @@ label {
   cursor: pointer;
 }
 
+.tag {
+  display: inline-block;
+  margin: 5px;
+  border: solid;
+  border-radius: 5px;
+  padding: 0px 5px;
+}
+
 .todo-button {
   float: right;
   font-size: 18px;
