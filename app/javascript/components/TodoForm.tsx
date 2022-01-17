@@ -96,7 +96,7 @@ function TodoForm({ formType }: TodoFormProps) {
           </>
         :
           <form onSubmit={handleSubmit}>
-            <div>
+            <div className="form-field">
               <label htmlFor="todo-name">
                 To-do
                 <span title="This field is required" style={{color: "red"}}>*</span>
@@ -106,13 +106,13 @@ function TodoForm({ formType }: TodoFormProps) {
                 id="todo-name"
                 name="todo[name]"
                 value={name}
-                size={50}
+                size={60}
                 maxLength={100}
                 required
                 onChange={handleChange}
                 autoFocus />
             </div>
-            <div>
+            <div className="form-field">
               <label htmlFor="todo-tags">
                 Tags (separate using spaces only)
               </label>
@@ -122,11 +122,11 @@ function TodoForm({ formType }: TodoFormProps) {
                 className="tags-input"
                 name="tags"
                 value={tagsString}
-                size={50}
+                size={60}
                 maxLength={100}
                 onChange={handleChange} />
             </div>
-            <div>
+            <div className="form-field">
               <label htmlFor="todo-details">
                 Details
               </label>
@@ -134,7 +134,7 @@ function TodoForm({ formType }: TodoFormProps) {
                 id="todo-details"
                 name="todo[details]"
                 value={details}
-                cols={50}
+                cols={60}
                 onChange={handleChange} />
             </div>
             <input type="submit" value={isEditForm ? "Edit" : "Add"} />
