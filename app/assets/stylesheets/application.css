@@ -87,6 +87,7 @@ input[type=checkbox] {
   padding-top: 5px;
   padding-bottom: 10px;
   overflow: auto;
+  white-space: pre-wrap;
 }
 
 .expand-button {
