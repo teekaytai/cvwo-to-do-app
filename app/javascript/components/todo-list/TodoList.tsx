@@ -61,7 +61,8 @@ type TodoListProps = {
 };
 
 function TodoList({ searchQuery }: TodoListProps) {
-  const [todos, todosDispatch] = React.useReducer(todosReducer, []);
+  const [fetchDone, setFetchDone] = React.useState(false);
+  const [todos, todosDispatch] = React.useReducer(todosReducer, null);
 
   React.useEffect(() => {
     const url = "/api/todos";
@@ -73,15 +74,18 @@ function TodoList({ searchQuery }: TodoListProps) {
         throw new Error("Failed to fetch to-dos.");
       })
       .then(data => todosDispatch({ type: "set", newTodos: data }))
-      .catch(() => todosDispatch({ type: "set", newTodos: null }));
+      .catch(error => console.log(error))
+      .finally(() => setFetchDone(true));
   }, []);
 
-
+  if (!fetchDone) {
+    return <div className="todo-list-message">Loading to-do list...</div>
+  }
   if (todos === null) {
-    return <div style={{textAlign: "center"}}>Error, unable to retrieve to-do list :(</div>
+    return <div className="todo-list-message">Error, unable to retrieve to-do list :(</div>
   }
   if (todos.length === 0) {
-    return <div style={{textAlign: "center"}}>No to-dos yet. Use the add to-do button above to add one!</div>
+    return <div className="todo-list-message">No to-dos yet. Use the add to-do button above to add one!</div>
   }
 
   return (

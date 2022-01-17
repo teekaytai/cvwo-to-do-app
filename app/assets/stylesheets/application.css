@@ -42,6 +42,10 @@ label {
   float: right;
 }
 
+.todo-list-message {
+  text-align: center;
+}
+
 #todo-list {
   margin: 50px auto;
   width: 700px;

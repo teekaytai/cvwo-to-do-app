@@ -10,6 +10,7 @@ type TodoFormProps = {
 function TodoForm({ formType }: TodoFormProps) {
   const isEditForm = formType == "edit";
   const { id } = useParams();
+  const [fetchDone, setFetchDone] = React.useState(false);
   const [todoToEdit, setTodoToEdit] = React.useState<Todo>(null);
   const [name, setName] = React.useState("");
   const [tagsString, setTagsString] = React.useState("");
@@ -33,7 +34,8 @@ function TodoForm({ formType }: TodoFormProps) {
           setTagsString(data.tags.join(" "));
           setDetails(data.details);
         })
-        .catch(error => console.log(error.message));
+        .catch(error => console.log(error.message))
+        .finally(() => setFetchDone(true));
     }, []);
   }
 
@@ -86,8 +88,10 @@ function TodoForm({ formType }: TodoFormProps) {
     <>
       <h1>{isEditForm ? "Edit your to-do" : "Add a new to-do"}</h1>
       {
-        // If the to-do to be edited could not be fetched, display an error message instead of the form
-        isEditForm && todoToEdit === null ?
+        isEditForm && !fetchDone ?
+          <div>Loading to-do...</div>
+        : isEditForm && todoToEdit === null ?
+          // If the to-do to be edited could not be fetched, display an error message instead of the form
           <>
             <div>Error, unable to retrieve to-do</div>
             <Link to="/">
