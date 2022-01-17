@@ -10,7 +10,7 @@ type TodoCheckboxProps = {
 function TodoCheckbox({ todoId, todoIsDone }: TodoCheckboxProps) {
   const todosDispatch = React.useContext(TodosDispatch);
 
-  const handleClick = (event: React.MouseEvent<HTMLInputElement>): void => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const url = `/api/todos/${todoId}`;
     const token = (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement).content;
 
@@ -37,7 +37,7 @@ function TodoCheckbox({ todoId, todoIsDone }: TodoCheckboxProps) {
   };
 
   return (
-    <input type="checkbox" onClick={handleClick} checked={todoIsDone} />
+    <input type="checkbox" onChange={handleChange} checked={todoIsDone} />
   );
 }
 
